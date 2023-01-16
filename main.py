@@ -6,37 +6,46 @@ from boss import Boss as Boss
 from boss import Attack1 as Attack1
 
 pygame.init()
-
+## Set A Clock ##
 clock = pygame.time.Clock()
 
+## Screen Display Size And Caption Set ##
 screen = pygame.display.set_mode((1200,600))
-pygame.display.set_caption("something")
+pygame.display.set_caption("untitled fighting game")
 
+## Icon Of Window Set ##
+icon_image = pygame.image.load("images/knifethrow8.png")
+pygame.display.set_icon(icon_image)
+
+## Background Set ##
 background = pygame.image.load("images/bg.png")
 ground = pygame.image.load("images/1333.jpg")
 
-player = pygame.sprite.GroupSingle()
+## Player Set ##
+player = pygame.sprite.GroupSingle() ## Adds The Player Class To The player Sprite Variable  ##
 player.add(Player())
 
-boss = pygame.sprite.GroupSingle()
+## Boss Set ##
+boss = pygame.sprite.GroupSingle() ## Adds The Boss Class To The Boss Sprite Variable ##
 boss.add(Boss())
 
-
+## FUNCTION TO DRAW THE HP BAR ##
 def draw_hp_bar(screen, x, y, current_hp, max_hp):
     hp_percent = current_hp / max_hp
-    pygame.draw.rect(screen, (255,255,255), (x, y, 375, 20))
-
+    pygame.draw.rect(screen, (255,255,255), (x, y, 375, 20)) ## Draws a White Bar Sized Of 375 pixels Wide and 20 Pixels Tall ##
+   
+    ## Low HP? Draws Red, Mid HP? Draws Yellow, High HP? Draws Green ##
     if hp_percent <= 0.25:
-        color = (255,0,0) # red
+        color = (255,0,0) ## red ##
     elif hp_percent <= 0.55:
-        color = (255,255,0) # yellow
+        color = (255,255,0) ## yellow ##
     else:
-        color = (0,255,0) # green
+        color = (0,255,0) ## green ##
         
-    pygame.draw.rect(screen, color, (x, y, hp_percent*250, 20))
+    pygame.draw.rect(screen, color, (x, y, hp_percent*250, 20)) ## Draw the health bar with the varying colors ##
 
 
-## STORE DIFFERENT SOUNDS IN DIFFERENT VARIABLES, AND ADJUST IT'S VOLUMES
+## STORE DIFFERENT SOUNDS IN DIFFERENT VARIABLES, AND ADJUST IT'S VOLUMES ##
 enemylow_sound = pygame.mixer.Sound("audio/enemylow.wav")
 enemylow_sound.set_volume(0.1)
 playerwin_sound = pygame.mixer.Sound("audio/win.wav")
@@ -66,7 +75,7 @@ while lobby:
     ## FILL IN FONT ##
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
     ## RENDER TEXT AND PLACE INSIDE VARIABLE##
-    text_surface = my_font.render('Welcome to the game', False, (0, 0, 0))
+    text_surface = my_font.render('Welcome to da untitled fighting game', False, (0, 0, 0))
     ## TAKE THAT TEXT VARIABLE AND PLACE IT ON THE SCREEN ##
     screen.blit(text_surface,(200,200))
     
@@ -136,7 +145,7 @@ while running:
     for attack in boss.sprite.barrage.sprites():
         if pygame.sprite.collide_rect(player.sprite, attack):
             player.sprite.rect.x-=5
-            player.sprite.hp -= 10
+            player.sprite.hp -= 30
 
 
              ## PLAYER SHOOT DAMAGE AND KNOCKBACK ##
@@ -156,8 +165,8 @@ while running:
                 ## PLAYER TIME STOP KNIVES DAMAGE AND KNOCKBACK ##
     for attack2 in player.sprite.knives.sprites():
         if pygame.sprite.collide_rect(boss.sprite, attack2):
-            boss.sprite.rect.x+=1
-            boss.sprite.hp -= 100
+            boss.sprite.rect.x+=10
+            boss.sprite.hp -= 140
 
 
 
