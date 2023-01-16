@@ -5,19 +5,21 @@ import random
 class ora (pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        ora1 = pygame.image.load("images/ora1.png").convert_alpha()
-        ora2 = pygame.image.load("images/ora2.png").convert_alpha()
-        ora3 = pygame.image.load("images/ora3.png").convert_alpha()
-        ora4 = pygame.image.load("images/ora4.png").convert_alpha()
-        ora5 = pygame.image.load("images/ora5.png").convert_alpha()
-        ora6 = pygame.image.load("images/ora6.png").convert_alpha()
-        ora7 = pygame.image.load("images/ora7.png").convert_alpha()
-        ora8 = pygame.image.load("images/ora8.png").convert_alpha()
-        ora9 = pygame.image.load("images/ora9.png").convert_alpha()
-        ora10 = pygame.image.load("images/ora10.png").convert_alpha()
-        ora11 = pygame.image.load("images/ora11.png").convert_alpha()
-        ora12 = pygame.image.load("images/ora12.png").convert_alpha()
-        self.ora = [ora1,ora2,ora3,ora4,ora5,ora6,ora7,ora8,ora9,ora10,ora11,ora12]
+        ############################### SELF ANIMATIONS ###################3333
+        self.ora = []## empty list ##
+        self.ora.append(pygame.image.load("images/ora1.png").convert_alpha()) ## append list with all these ##
+        self.ora.append(pygame.image.load("images/ora2.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora3.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora4.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora5.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora6.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora7.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora8.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora9.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora10.png").convert_alpha())
+        self.ora.append(pygame.image.load("images/ora11.png").convert_alpha()) 
+        self.ora.append(pygame.image.load("images/ora12.png").convert_alpha())  
+        
         self.ora_index = 0
         self.image = self.ora[self.ora_index]
         self.rect = self.image.get_rect()
@@ -27,14 +29,14 @@ class ora (pygame.sprite.Sprite):
         
 
     def update(self):
-        self.ora_index += 0.4
-        if self.ora_index >= len(self.ora): self.ora_index = 0
-        self.image = self.ora[int(self.ora_index)]
+        self.ora_index += 0.4 ## Change through images, making itself look animated ##
+        if self.ora_index >= len(self.ora): self.ora_index = 0 ## if length goes out of list, restart from 0 ##
+        self.image = self.ora[int(self.ora_index)] ## Set this image to self.image ##
         
         
-        self.rect.x -= 4
+        self.rect.x -= 4 ## move 4 to left constantly ##
         
-        if self.rect.x < self.bosspos - 300:
+        if self.rect.x < self.bosspos - 300: ## if goes 300 pixels to the left from the attack position of the boss, remove from the screen ##
             self.kill()
             
 
@@ -42,7 +44,7 @@ class ora (pygame.sprite.Sprite):
 
 
 class Attack1(pygame.sprite.Sprite):
-
+    ## Similiar to Bullet for the player class but some changes, this thing can go not only straght, but also northwest! ##
     def __init__(self, x, y):
         super().__init__()
         self.image = pygame.image.load("images/shoot.png").convert_alpha()
@@ -52,37 +54,35 @@ class Attack1(pygame.sprite.Sprite):
         self.prob_straight = 0.8 # Prob of going straight
         self.prob_nw = 0.2 # Prob of going northwest
     def update(self):
-        random_num = random.random() #Generates between 0 and 1
+        random_num = random.random() ## Generates between 0 and 1 ##
         
         if random_num < self.prob_straight:
-            self.rect.x -= 20 # bullet will go straight
+            self.rect.x -= 20 ## bullet will go straight ##
         else:
-            self.rect.x -= 20 # bullet will go northwest
-            self.rect.y -= 1
+            self.rect.x -= 20 ## bullet will go northwest ##
+            self.rect.y -= 1  ## How far up to northwest? This -1 holds that fate ##
         
-        if self.rect.x == 60:
+        if self.rect.x == 60: ## If goes this far, remove from screen ##
             self.kill()
        
 class Attack2(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
         super().__init__()
-        self.image = pygame.image.load("images/roadsign.png").convert_alpha()
+        self.image = pygame.image.load("images/roadsign.png").convert_alpha() ## questionable choice of image/attack, but why not? ##
         self.rect = self.image.get_rect(center=(x, y))
-        self.x_velocity = random.uniform(-10, -8)
-        self.y_velocity = random.uniform(0 , -4)
         self.prob_straight = 0.8 # Prob of going straight
         self.prob_nw = 0.2 # Prob of going northwest
     def update(self):
         random_num = random.random() #Generates between 0 and 1
         
-        if random_num < self.prob_straight:
-            self.rect.x -= 10 # bullet will go straight
+        if random_num < self.prob_straight: # Depending on the result of random number:
+            self.rect.x -= 10 ## bullet will go straight ##
         else:
-            self.rect.x -= 20 # bullet will go northwest
+            self.rect.x -= 20 ## bullet will go northwest ##
             self.rect.y -= 10
         
-        if self.rect.x == 60:
+        if self.rect.x == 60: ## Goes too far? Disappear from the screen! ##
             self.kill()
 
 
@@ -257,6 +257,10 @@ class Boss(pygame.sprite.Sprite):
             self.gravity = -30
 
         
+        
+            
+
+        
 
 
     ## FUNCTION FOR THE APPLIANCE OF GRAVITY ##
@@ -267,6 +271,8 @@ class Boss(pygame.sprite.Sprite):
         # KEEPS THE BOSS FFROM FALLING OFF THE SCREEN AND STAY ON THE GROUND, IF RECT BOTTOM AT 490, STAYS AT 490 #
         if self.rect.bottom >= 490:
             self.rect.bottom = 490
+            self.jumpup = False
+            
 
        
     ## FUNCTION FOR THE BOSS TO MOVE LEFT ##
@@ -277,12 +283,14 @@ class Boss(pygame.sprite.Sprite):
             self.movement_speed += self.accel # MOVEMENT SPEED ADDS BY ACCELERATION VALUE #
             self.rect.x -= self.movement_speed # APPLIES THIS ACCELERATION TO MOVE LEFT (WHICH IS FORWARD TO THE BOSS) #
         else:
-            self.movement_speed = 0 # IF NOT MOVING LEFT, PUTS ACCEL TO 0 #
+            self.movement_speed *= 0.9 # IF NOT MOVING LEFT, SLOWS DOWN ACCEL, CHANGES STATUS #
+            self.moveleft = False
         
         # LIMITS THE MOVEMENTS SPEED OF THE BOSS #
-        if self.movement_speed>=14:  
+        if self.movement_speed>14:  
             self.movement_speed = 14
-            self.moveleft = False # STOP MOVING IF GOING TOO FAST #
+           #self.moveleft = False ## FOR ANIMATION NOT TO LOOK WEIRD ##
+            
 
 
     ## FUNCTION TO MOVE RIGHT ( OR BACK, IN BOSS PERSPECTIVE ) ##
@@ -294,14 +302,17 @@ class Boss(pygame.sprite.Sprite):
             self.movement_speed += self.accel
             self.rect.x += self.movement_speed
 
-        # IF NOT MOVING RIGHT ANYMORE, STOP MOVING #
+        # IF NOT MOVING RIGHT ANYMORE, SLOW DOWN ACCEL AND CHANGE STATUS #
         else:
-            self.movement_speed = 0
+            self.movement_speed *= 0.9
+            self.moveright = False
         
-        # CAPS MOVEMENT SPEED AND STOP MOVING RIGHT #
-        if self.movement_speed>=14:
+        # CAPS MOVEMENT SPEED  #
+        if self.movement_speed>14:
             self.movement_speed = 14
-            self.moveright = False 
+
+      
+            
         
         
         
@@ -318,7 +329,7 @@ class Boss(pygame.sprite.Sprite):
         ##### APPLY ALL MOVEMENT ACTIONS ONLY IF PLAYER HAS NOT STOPPED TIME #########
         if not self.time_stopped:
             ## IDLE ANIMATION ##
-            if self.rect.y <= 490:
+            if self.rect.y <= 490 and not self.moveleft and not self.moveright and not self.jumpup:
                 self.bossidle_index += 0.2
                 if self.bossidle_index >= len(self.bossidle): self.bossidle_index = 0
                 self.image = self.bossidle[int(self.bossidle_index)]
@@ -340,22 +351,22 @@ class Boss(pygame.sprite.Sprite):
             
             
             ## WALKBACK ANIMATION ##
-            if self.moveright:
+            if self.moveright and not self.moveleft and not self.jumpup:
 
                 self.bossback_index += 0.2
                 if self.bossback_index >= len(self.bossback): 
                     self.bossback_index = 0
-                    self.attack3 = False
+                    
                 self.image = self.bossback[int(self.bossback_index)]
 
 
             ## WALK ANIMATION ##
-            if self.moveleft:
+            if self.moveleft and not self.jumpup and not self.moveright:
 
-                self.bosswalk_index += 0.1
+                self.bosswalk_index += 0.2
                 if self.bosswalk_index >= len(self.bosswalk): 
                     self.bosswalk_index = 0
-                    self.attack3 = False
+                    
                 self.image = self.bosswalk[int(self.bosswalk_index)]
             
             
@@ -413,6 +424,7 @@ class Boss(pygame.sprite.Sprite):
             if move_chance < 200 :
                 if self.rect.x < playerpos:  # AT ALL COSTS, BOSS WILL MOVE RIGHT IF PLAYER IS BEHIND HIM! nothing boss can do if time is stopped doe :( #
                     self.move_right()
+                    self.moveright = False ## Dont want the animation to play when this happens, to achieve this, we can set moveright to False ##
                     move_chance = random.randint(0,200)
 
             
