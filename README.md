@@ -179,7 +179,7 @@ Before the creation of this game, i was not too experienced with pygame sprites,
 
 
 
-3. Video Demo:
+Video Demo:
 
 
 
