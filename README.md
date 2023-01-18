@@ -99,10 +99,10 @@ Sys:
 
 Essential Algorithms:
 
-StartScreen: 
+StartScreen 
 - If mouseclicked, move to GameLoop, If not mouseclicked, stay.
 
-GameLoop: 
+GameLoop
 - If player stops time, change 
 Background to yellow, if not stopped
 Time, keep background image.
@@ -117,13 +117,13 @@ stay in the game loop.
 
 
 
-EndScreen: 
+EndScreen
 - If mouseclicked, close the program.
 - If not mouseclicked, stay in EndScreen
 
 
 
-Player2(class): 
+Player2(class) 
 - If user presses A and D at the Same time, movement speed is 0.
 				
 - If user holds G to the point of the
@@ -139,7 +139,7 @@ The ending animation index, time Stop status set to True.
 
 
 
-Boss(class): 		
+Boss(class)	
 - Boss movements and attacks must only happen if timestop is False.
 			
 - Boss must jump to dodge the player’sBullet attack when it comes too close.
