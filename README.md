@@ -97,6 +97,56 @@ Sys:
 			pure self-preference.
 
 
+Essential Algorithms:
+
+StartScreen: If mouseclicked, move to GameLoop, If not mouseclicked, stay.
+
+GameLoop: 
+-If player stops time, change 
+Background to yellow, if not stopped
+Time, keep background image.
+-If player health or boss health 
+decreases, minus their health bar.
+
+-If neither player or boss has 0 HP,
+stay in the game loop.
+If either reaches 0 HP, move to EndScreen.
+
+
+
+EndScreen: 
+-If mouseclicked, close the program.
+If not mouseclicked, stay in EndScreen
+
+
+
+Player2(class): 
+-If user presses A and D at the Same time, movement speed is 0.
+				
+-If user holds G to the point of the
+The ending animation index, time Stop status set to True.
+
+-If only the player is on the ground, enable them to jump.
+
+-If only the attack cooldown is 0, player may use their attack ability.
+
+-If 10  seconds has passed after timestop ability, timestop is set to False.
+
+-If user gets to the end of the Screen, keep making them stay in one place.
+
+
+
+Boss(class): 		
+-Boss movements and attacks must only happen if timestop is False.
+			
+-Boss must jump to dodge the player’sBullet attack when it comes too close.
+
+-Boss must move right at all costs if it Detects for itself to be at the left of the Player2(class)’s position.
+	
+-Boss must stay in position if detects it is going out of the screen.
+
+-Ora(class) & Muda(class): Remove from screen if Went too far from Parent class’s attack position.
+			
 
 
 
