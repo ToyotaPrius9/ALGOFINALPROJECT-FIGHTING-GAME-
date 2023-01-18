@@ -153,3 +153,41 @@ Boss(class)
 
 
 
+
+ScreenShots: 
+- Start Screen
+
+![image](https://user-images.githubusercontent.com/114371673/213073461-305d141e-21c2-4bba-bedd-90c3ab29ef52.png)
+
+
+-Game Play Screen
+
+![image](https://user-images.githubusercontent.com/114371673/213073460-33359128-c1e7-4684-8aa5-14a49eef7cfd.png)
+
+-Game End Screen (Win)
+
+![image](https://user-images.githubusercontent.com/114371673/213073524-324467b3-932e-420e-bca3-0e3b43b0a042.png)
+
+-Game End Screen (Lose)
+
+![image](https://user-images.githubusercontent.com/114371673/213073754-cd5337dd-9a5b-484f-8402-944be5bcca5a.png)
+
+
+Lessons Learned:
+
+Before the creation of this game, i was not too experienced with pygame sprites, i always did have a discomfort working with them since i used to find difficulties in obtaining certain values of sprites (inside of the game loop) but as i went deeper into the creation of this game, i found it really interesting on how sprite mechanics worked and learned useful knowledge on how to obtain desired values from sprites, these desired values include the constantly updating values of the sprite’s X position, or any variable stored inside of this sprite class, or even sprites which comes as a bunch of listed values (such as the bullet class for this matter). Another side-skill I have obtained is the functioning methods of implementing animation frames to the point that I can even enable a function to play when an animation reaches a certain point. 
+
+
+
+3. Video Demo:
+
+
+
+(lowering of volume is recommended)
+https://drive.google.com/file/d/1AkZE0M6MS0OWjBRR_V36LK5QpVVHpas3
+
+
+
+
+
+
