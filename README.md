@@ -28,19 +28,9 @@ Fighting Game Project
 
 
 
-Table Of Contents:
 
- Project Documentation
-Brief Description
-Use-case Diagram
-Activity Diagram 
-Class Diagram - Name of the class, relations
-Modules
-Essential Algorithms
-Screenshots
-Lessons learned
 
-Github Program Source Code
+
 
 
 
